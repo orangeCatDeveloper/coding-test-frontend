@@ -1,7 +1,7 @@
 import "./App.css";
-import SearchUser from "./components/SearchUser/searchUser";
-import Database from "./components/Database/database";
-import UserDetails from "./components/UserDetails/userDetails";
+import SearchUser from "./components/SearchUser/SearchUser";
+import Database from "./components/Database/Database";
+import UserDetails from "./components/UserDetails/UserDetails";
 import { ROUTE_PATHS } from "./constants/path";
 import {
   MenuFoldOutlined,

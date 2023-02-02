@@ -61,7 +61,7 @@ const SearchUser = () => {
   return (
     <>
       <Search
-        placeholder="input username"
+        placeholder="Input username"
         enterButton="Search"
         size="large"
         onSearch={onSearch}

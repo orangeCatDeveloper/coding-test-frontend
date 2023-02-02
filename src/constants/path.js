@@ -1,3 +1,4 @@
+// Paths for left side menu
 export const ROUTE_PATHS = {
   DATABASE: "/database",
   SEARCH_USER: "/search-user",
