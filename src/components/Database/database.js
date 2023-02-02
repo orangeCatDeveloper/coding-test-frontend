@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Space, Table, Modal, notification } from "antd";
+import { Space, Table, Modal } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import * as service from "../services/users-service";
+import { ROUTE_PATHS } from "../../constants/path";
+import * as service from "../../services/users-service";
 
 const Database = () => {
   const [users, setUsers] = useState([]);
@@ -41,7 +42,9 @@ const Database = () => {
               alt="Avatar"
               style={{ width: 50, height: 50, borderRadius: "50%" }}
             />
-            <Link to={`/user-detail/${record._id}`}>{record.username}</Link>
+            <Link to={`${ROUTE_PATHS.USER_DETAIL}/${record._id}`}>
+              {record.username}
+            </Link>
           </Space>
         </>
       )
@@ -63,4 +66,4 @@ const Database = () => {
   );
 };
 
-export default React.memo(Database);
+export default Database;

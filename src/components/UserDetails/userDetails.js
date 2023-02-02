@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Space, Divider, Table } from "antd";
-import * as repositoriesService from "../services/repositories-service";
-import * as usersService from "../services/users-service";
+import * as repositoriesService from "../../services/repositories-service";
+import * as usersService from "../../services/users-service";
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -58,4 +58,4 @@ const UserDetails = () => {
   );
 };
 
-export default React.memo(UserDetails);
+export default UserDetails;

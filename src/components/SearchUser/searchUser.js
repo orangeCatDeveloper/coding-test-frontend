@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Input, Space, Table, Spin, notification } from "antd";
 import { Link } from "react-router-dom";
-import * as service from "../services/users-service";
+import { ROUTE_PATHS } from "../../constants/path";
+import * as service from "../../services/users-service";
 const { Search } = Input;
 
 const SearchUser = () => {
@@ -44,7 +45,9 @@ const SearchUser = () => {
               alt="Avatar"
               style={{ width: 50, height: 50, borderRadius: "50%" }}
             />
-            <Link to={"/user-detail/" + record._id}>{record.username}</Link>
+            <Link to={`${ROUTE_PATHS.USER_DETAIL}/${record._id}`}>
+              {record.username}
+            </Link>
           </Space>
         </>
       )
@@ -88,4 +91,4 @@ const SearchUser = () => {
   );
 };
 
-export default React.memo(SearchUser);
+export default SearchUser;

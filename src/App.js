@@ -1,7 +1,8 @@
 import "./App.css";
-import SearchUser from "./components/searchUser";
-import Database from "./components/database";
-import UserDetails from "./components/userDetails";
+import SearchUser from "./components/SearchUser/searchUser";
+import Database from "./components/Database/database";
+import UserDetails from "./components/UserDetails/userDetails";
+import { ROUTE_PATHS } from "./constants/path";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -12,12 +13,6 @@ import React, { useState, useEffect } from "react";
 import { Layout, Menu, theme } from "antd";
 import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
-
-const routePath = {
-  Database: "/database",
-  SearchUser: "/search-user",
-  UserDetail: "/user-detail"
-};
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -30,14 +25,14 @@ function getItem(label, key, icon, children, type) {
 }
 
 const items = [
-  getItem("Search User", routePath.SearchUser, <SearchOutlined />),
-  getItem("Database", routePath.Database, <DatabaseOutlined />)
+  getItem("Search User", ROUTE_PATHS.SEARCH_USER, <SearchOutlined />),
+  getItem("Database", ROUTE_PATHS.DATABASE, <DatabaseOutlined />)
 ];
 
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedItem, setSelectedItem] = useState(routePath.SearchUser);
+  const [selectedItem, setSelectedItem] = useState(ROUTE_PATHS.SEARCH_USER);
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer }
@@ -45,12 +40,12 @@ const App = () => {
 
   useEffect(() => {
     if (
-      location.pathname === routePath.SearchUser ||
+      location.pathname === ROUTE_PATHS.SEARCH_USER ||
       location.pathname === "/"
     ) {
-      setSelectedItem(routePath.SearchUser);
-    } else if (location.pathname === routePath.Database) {
-      setSelectedItem(routePath.Database);
+      setSelectedItem(ROUTE_PATHS.SEARCH_USER);
+    } else if (location.pathname === ROUTE_PATHS.DATABASE) {
+      setSelectedItem(ROUTE_PATHS.DATABASE);
     } else {
       setSelectedItem("");
     }
@@ -94,10 +89,11 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route path={routePath.SearchUser} element={<SearchUser />} />
-            <Route path={routePath.Database} element={<Database />} />
+            <Route path="/" element={<SearchUser />} />
+            <Route path={ROUTE_PATHS.SEARCH_USER} element={<SearchUser />} />
+            <Route path={ROUTE_PATHS.DATABASE} element={<Database />} />
             <Route
-              path={`${routePath.UserDetail}/:id`}
+              path={`${ROUTE_PATHS.USER_DETAIL}/:id`}
               element={<UserDetails />}
             />
           </Routes>
@@ -107,4 +103,4 @@ const App = () => {
   );
 };
 
-export default React.memo(App);
+export default App;
